@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Threading.Tasks;
 
 namespace Keyboard
 {
@@ -17,31 +19,31 @@ namespace Keyboard
         private char[] ruUpperCase = { 'Ё', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.' };
         private char[] enUpperCase = { '`', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/' };
 
-        bool currentLayout; // раскладка
-        bool currentLetter; // регистр
+        bool currentLayout; // раскладка 0 - ru, 1 - en
+        bool currentLetter; // регистр 0 - l, 1 - U
 
         public MainWindow()
         {
             InitializeComponent();
 
-            this.currentLayout = true;
-            this.currentLetter = true;
+            this.currentLayout = false;
+            this.currentLetter = false;
         }
 
-        private void AlphanumericButton_Click(object sender, RoutedEventArgs e)
+        private async void AlphanumericButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
             {
                 this.enterTextBlock.Text += button.Content;
+
+                await Task.Delay(50);
+                button.Background = new SolidColorBrush(Color.FromRgb(59, 59, 59));
             }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-
             Key keyPressed = e.Key;
-
-            //MessageBox.Show(keyPressed.ToString());
 
             if (keyPressed == Key.Escape)
             {
@@ -56,6 +58,81 @@ namespace Keyboard
                 }
             }
 
+            foreach (var i in this.firstButtonRow.Children)
+            {
+                if (i is Button button)
+                {
+                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                    if (button.Name.ToString() == keyPressed.ToString())
+                    {
+                        button.Background = Brushes.Blue;
+                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
+                        return;
+                    }
+                }
+            }
+
+            foreach (var i in this.secondButtonRow.Children)
+            {
+                if (i is Button button)
+                {
+                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                    if (button.Name.ToString() == keyPressed.ToString())
+                    {
+                        button.Background = Brushes.Blue;
+                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
+                        return;
+                    }
+                }
+            }
+
+            foreach (var i in this.thirdButtonRow.Children)
+            {
+                if (i is Button button)
+                {
+                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                    if (button.Name.ToString() == keyPressed.ToString())
+                    {
+                        button.Background = Brushes.Blue;
+                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
+                        return;
+                    }
+                }
+            }
+
+            foreach (var i in this.fourthButtonRow.Children)
+            {
+                if (i is Button button)
+                {
+                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                    if (button.Name.ToString() == keyPressed.ToString())
+                    {
+                        button.Background = Brushes.Blue;
+                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Key keyPressed = e.Key;
+
+            if (e.Key == Key.LeftShift)
+            {
+                this.ChangeLetter();
+            }
+
+            if (keyPressed == Key.Escape)
+            {
+                return;
+            }
+
             else if (keyPressed == Key.Space)
             {
                 this.enterTextBlock.Text += " ";
@@ -63,72 +140,41 @@ namespace Keyboard
 
             else if (keyPressed == Key.CapsLock)
             {
-                this.ChangeLayout();
+                this.ChangeLetter();
             }
 
-            else
+            else if (keyPressed == Key.LeftCtrl)
             {
-                foreach (var i in this.firstButtonRow.Children)
-                {
-                    if (i is Button button)
-                    {
-                        //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                        if (button.Name.ToString() == keyPressed.ToString())
-                        {
-                            button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                            return;
-                        }
-                    }
-                }
-
-                foreach (var i in this.secondButtonRow.Children)
-                {
-                    if (i is Button button)
-                    {
-                        //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                        if (button.Name.ToString() == keyPressed.ToString())
-                        {
-                            button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                            return;
-                        }
-                    }
-                }
-
-                foreach (var i in this.thirdButtonRow.Children)
-                {
-                    if (i is Button button)
-                    {
-                        //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                        if (button.Name.ToString() == keyPressed.ToString())
-                        {
-                            button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                            return;
-                        }
-                    }
-                }
-
-                foreach (var i in this.fourthButtonRow.Children)
-                {
-                    if (i is Button button)
-                    {
-                        //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                        if (button.Name.ToString() == keyPressed.ToString())
-                        {
-                            button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                            return;
-                        }
-                    }
-                }
+                this.ChangeLayout();
             }
         }
 
+
         public void ChangeLayout()
         {
-            char[] keyboard = this.ruLowerCase;
+            char[] keyboard;
 
             if (this.currentLayout)
             {
-                keyboard = this.enLowerCase;
+                if (this.currentLetter)
+                {
+                    keyboard = this.ruUpperCase;
+                }
+                else
+                {
+                    keyboard = this.ruLowerCase;
+                }
+            }
+            else
+            {
+                if (this.currentLetter)
+                {
+                    keyboard = this.enUpperCase;
+                }
+                else
+                {
+                    keyboard = this.enLowerCase;
+                }
             }
 
             this.Oem3.Content = keyboard[0];
@@ -166,13 +212,33 @@ namespace Keyboard
             this.currentLayout = !this.currentLayout;
         }
 
+
         public void ChangeLetter()
         {
-            char[] keyboard = this.ruUpperCase;
+            char[] keyboard;
 
-            if (this.currentLayout)
+            if (this.currentLetter)
             {
-                keyboard = this.ruUpperCase;
+                if (this.currentLayout)
+                {
+                    keyboard = this.enLowerCase;
+                }
+                else
+                {
+                    keyboard = this.ruLowerCase;
+                }
+            }
+            else
+            {
+                if (this.currentLayout)
+                {
+                    keyboard = this.enUpperCase;
+                }
+                else
+                {
+                    keyboard = this.ruUpperCase;
+
+                }
             }
 
             this.Oem3.Content = keyboard[0];
@@ -209,5 +275,6 @@ namespace Keyboard
 
             this.currentLetter = !this.currentLetter;
         }
+
     }
 }

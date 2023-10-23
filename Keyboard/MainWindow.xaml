@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Keyboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" Background="#FF202020">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -27,22 +27,22 @@
             </Grid.ColumnDefinitions>
 
             <UniformGrid x:Name="firstButtonRow" Rows="1" Grid.Column="0">
-                <Button x:Name="Oem3" Content="ё" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D1" Content="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D2" Content="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D3" Content="3" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D4" Content="4" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D5" Content="5" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D6" Content="6" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D7" Content="7" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D8" Content="8" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D9" Content="9" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D0" Content="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemMinus" Content="-" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemPlus" Content="=" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
+                <Button x:Name="Oem3" Content="ё" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" BorderBrush="{x:Null}" Foreground="White" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D1" Content="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D2" Content="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D3" Content="3" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D4" Content="4" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D5" Content="5" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D6" Content="6" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D7" Content="7" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D8" Content="8" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D9" Content="9" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D0" Content="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemMinus" Content="-" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemPlus" Content="=" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
 
-            <Button x:Name="Back" Content="BackSpace" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="Back" Content="BackSpace" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
 
@@ -53,24 +53,24 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Tab" Content="Tab" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="Tab" Content="Tab" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
             <UniformGrid x:Name="secondButtonRow" Grid.Column="1" Rows="1">
-                <Button x:Name="Q" Content="й" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="W" Content="ц" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="E" Content="у" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="R" Content="к" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="T" Content="е" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="Y" Content="н" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="U" Content="г" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="I" Content="ш" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="O" Content="щ" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="P" Content="з" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemOpenBrackets" Content="х" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="Oem6" Content="ъ" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
+                <Button x:Name="Q" Content="й" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="W" Content="ц" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="E" Content="у" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="R" Content="к" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="T" Content="е" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="Y" Content="н" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="U" Content="г" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="I" Content="ш" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="O" Content="щ" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="P" Content="з" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemOpenBrackets" Content="х" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="Oem6" Content="ъ" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
 
-            <Button x:Name="Oem5" Content="\" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
+            <Button x:Name="Oem5" Content="\" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
         <Grid Grid.Row="5">
@@ -80,23 +80,23 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Capital" Content="Caps Lock" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="Capital" Content="Caps Lock" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
             <UniformGrid x:Name="thirdButtonRow" Grid.Column="1" Rows="1">
-                <Button x:Name="A" Content="ф" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="S" Content="ы" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="D" Content="в" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="F" Content="а" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="G" Content="п" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="H" Content="р" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="J" Content="о" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="K" Content="л" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="L" Content="д" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="Oem1" Content="ж" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemQuotes" Content="э" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
+                <Button x:Name="A" Content="ф" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="S" Content="ы" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="D" Content="в" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="F" Content="а" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="G" Content="п" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="H" Content="р" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="J" Content="о" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="K" Content="л" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="L" Content="д" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="Oem1" Content="ж" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemQuotes" Content="э" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
 
-            <Button Content="Enter" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Content="Enter" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
         <Grid Grid.Row="6">
@@ -106,22 +106,22 @@
                 <ColumnDefinition Width="2.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="LeftShift" Content="Shift" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="LeftShift" Content="Shift" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
             <UniformGrid x:Name="fourthButtonRow" Grid.Column="1" Rows="1">
-                <Button x:Name="Z" Content="я" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="X" Content="ч" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="C" Content="с" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="V" Content="м" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="B" Content="и" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="N" Content="т" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="M" Content="ь" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemComma" Content="б" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemPeriod" Content="ю" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
-                <Button x:Name="OemQuestion" Content="." Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click"/>
+                <Button x:Name="Z" Content="я" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="X" Content="ч" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="C" Content="с" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="V" Content="м" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="B" Content="и" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="N" Content="т" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="M" Content="ь" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemComma" Content="б" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemPeriod" Content="ю" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="OemQuestion" Content="." Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
 
-            <Button x:Name="RightShift" Content="Shift" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="RightShift" Content="Shift" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
         <Grid Grid.Row="7">
@@ -132,17 +132,17 @@
             </Grid.ColumnDefinitions>
 
             <UniformGrid Grid.Column="0" Rows="1">
-                <Button x:Name="LeftCtrl" Content="Ctrl" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <Button x:Name="LWin" Content="Win" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <Button x:Name="LeftAlt" Content="Alt" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Button x:Name="LeftCtrl" Content="Ctrl" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="LWin" Content="Win" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="LeftAlt" Content="Alt" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
 
-            <Button x:Name="Space" Content="Space" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="Space" Content="Space" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
             <UniformGrid Grid.Column="2" Rows="1">
-                <Button x:Name="RightAlt" Content="Alt" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <Button x:Name="RWin" Content="Win" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <Button x:Name="RightCtrl" Content="Ctrl" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Button x:Name="RightAlt" Content="Alt" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="RWin" Content="Win" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
+                <Button x:Name="RightCtrl" Content="Ctrl" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
             </UniformGrid>
         </Grid>
     </Grid>
