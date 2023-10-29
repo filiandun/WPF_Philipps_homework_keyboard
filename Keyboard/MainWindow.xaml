@@ -20,13 +20,13 @@
 
         <TextBlock Grid.Row="2" x:Name="enterTextBlock" Margin="2" Text="" Background="Khaki" TextWrapping="NoWrap"/>
 
-        <Grid Grid.Row="3">
+        <Grid x:Name="firstButtonRow" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="13*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <UniformGrid x:Name="firstButtonRow" Rows="1" Grid.Column="0">
+            <UniformGrid x:Name="firstAlphaNumericButtonRow" Rows="1" Grid.Column="0">
                 <Button x:Name="Oem3" Content="ё" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" BorderBrush="{x:Null}" Foreground="White" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="D1" Content="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="D2" Content="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Foreground="White" BorderBrush="{x:Null}" Background="#FF3B3B3B" IsTabStop="False" Focusable="False"/>
@@ -46,7 +46,7 @@
         </Grid>
 
 
-        <Grid Grid.Row="4">
+        <Grid x:Name="secondButtonRow" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="12*"/>
@@ -55,7 +55,7 @@
 
             <Button x:Name="Tab" Content="Tab" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
-            <UniformGrid x:Name="secondButtonRow" Grid.Column="1" Rows="1">
+            <UniformGrid x:Name="secondAlphaNumericButtonRow" Grid.Column="1" Rows="1">
                 <Button x:Name="Q" Content="й" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="W" Content="ц" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="E" Content="у" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
@@ -73,7 +73,7 @@
             <Button x:Name="Oem5" Content="\" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
-        <Grid Grid.Row="5">
+        <Grid x:Name="thirdButtonRow" Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="11*"/>
@@ -82,7 +82,7 @@
 
             <Button x:Name="Capital" Content="Caps Lock" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
-            <UniformGrid x:Name="thirdButtonRow" Grid.Column="1" Rows="1">
+            <UniformGrid x:Name="thirdAlphaNumericButtonRow" Grid.Column="1" Rows="1">
                 <Button x:Name="A" Content="ф" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="S" Content="ы" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="D" Content="в" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
@@ -99,7 +99,7 @@
             <Button Content="Enter" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
-        <Grid Grid.Row="6">
+        <Grid x:Name="fourthButtonRow" Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2.5*"/>
                 <ColumnDefinition Width="10*"/>
@@ -108,7 +108,7 @@
 
             <Button x:Name="LeftShift" Content="Shift" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
 
-            <UniformGrid x:Name="fourthButtonRow" Grid.Column="1" Rows="1">
+            <UniformGrid x:Name="fourthAlphaNumericButtonRow" Grid.Column="1" Rows="1">
                 <Button x:Name="Z" Content="я" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="X" Content="ч" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
                 <Button x:Name="C" Content="с" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlphanumericButton_Click" Background="#FF3B3B3B" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
@@ -124,7 +124,7 @@
             <Button x:Name="RightShift" Content="Shift" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF323232" Foreground="White" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False"/>
         </Grid>
 
-        <Grid Grid.Row="7">
+        <Grid x:Name="fifthButtonRow" Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4.5*"/>
                 <ColumnDefinition Width="6*"/>

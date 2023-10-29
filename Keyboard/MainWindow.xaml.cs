@@ -4,6 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Windows.Controls.Primitives;
+using System.Linq;
 
 namespace Keyboard
 {
@@ -12,7 +15,6 @@ namespace Keyboard
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private char[] ruLowerCase = { 'ё', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.' };
         private char[] enLowerCase = { '`', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/' };
 
@@ -30,14 +32,11 @@ namespace Keyboard
             this.currentLetter = false;
         }
 
-        private async void AlphanumericButton_Click(object sender, RoutedEventArgs e)
+        private void AlphanumericButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
             {
                 this.enterTextBlock.Text += button.Content;
-
-                await Task.Delay(50);
-                button.Background = new SolidColorBrush(Color.FromRgb(59, 59, 59));
             }
         }
 
@@ -45,236 +44,169 @@ namespace Keyboard
         {
             Key keyPressed = e.Key;
 
-            if (keyPressed == Key.Escape)
+            switch (keyPressed)
             {
-                return;
-            }
-
-            else if (keyPressed == Key.Back)
-            {
-                if (!String.IsNullOrEmpty(this.enterTextBlock.Text))
-                {
-                    this.enterTextBlock.Text = this.enterTextBlock.Text.Remove(this.enterTextBlock.Text.Length - 1, 1);
-                }
-            }
-
-            foreach (var i in this.firstButtonRow.Children)
-            {
-                if (i is Button button)
-                {
-                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                    if (button.Name.ToString() == keyPressed.ToString())
+                case Key.Back:
+                    if (!String.IsNullOrEmpty(this.enterTextBlock.Text))
                     {
-                        button.Background = Brushes.Blue;
-                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
-                        return;
+                        this.enterTextBlock.Text = this.enterTextBlock.Text.Remove(this.enterTextBlock.Text.Length - 1, 1);
                     }
-                }
+                    break;
+
+                case Key.CapsLock: 
+                    this.ChangeLetter();
+                    break;
+
+                case Key.LeftShift:
+                    this.currentLetter = false;
+                    this.ChangeLetter();
+                    break;
+
+                case Key.Space:
+                    this.enterTextBlock.Text += " ";
+                    break;
             }
 
-            foreach (var i in this.secondButtonRow.Children)
-            {
-                if (i is Button button)
-                {
-                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                    if (button.Name.ToString() == keyPressed.ToString())
-                    {
-                        button.Background = Brushes.Blue;
-                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
-                        return;
-                    }
-                }
-            }
-
-            foreach (var i in this.thirdButtonRow.Children)
-            {
-                if (i is Button button)
-                {
-                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                    if (button.Name.ToString() == keyPressed.ToString())
-                    {
-                        button.Background = Brushes.Blue;
-                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
-                        return;
-                    }
-                }
-            }
-
-            foreach (var i in this.fourthButtonRow.Children)
-            {
-                if (i is Button button)
-                {
-                    //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
-                    if (button.Name.ToString() == keyPressed.ToString())
-                    {
-                        button.Background = Brushes.Blue;
-                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
-                        return;
-                    }
-                }
-            }
+            this.UpdateKeyboard(keyPressed);
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             Key keyPressed = e.Key;
 
-            if (e.Key == Key.LeftShift)
+            switch (keyPressed)
             {
-                this.ChangeLetter();
-            }
+                case Key.LeftAlt:
+                    if (e.KeyboardDevice.IsKeyUp(Key.LeftShift) && e.KeyboardDevice.IsKeyUp(Key.LeftAlt))
+                    {
+                        this.ChangeLayout();
+                    }
+                    break;
 
-            if (keyPressed == Key.Escape)
-            {
-                return;
+                case Key.LeftShift:
+                    if (e.KeyboardDevice.IsKeyUp(Key.LeftShift))
+                    {
+                        this.currentLetter = true;
+                        this.ChangeLetter();
+                    }
+                    break;
             }
+        }
 
-            else if (keyPressed == Key.Space)
+        private async void UpdateKeyboard(Key keyPressed)
+        {
+            List<UIElementCollection> allButtonRows = new List<UIElementCollection>
             {
-                this.enterTextBlock.Text += " ";
-            }
+                this.firstButtonRow.Children,
+                this.secondButtonRow.Children,
+                this.thirdButtonRow.Children,
+                this.fourthButtonRow.Children,
+                this.fifthButtonRow.Children
+            };
 
-            else if (keyPressed == Key.CapsLock)
+            foreach (UIElementCollection buttonRow in allButtonRows)
             {
-                this.ChangeLetter();
-            }
+                foreach (var i in buttonRow)
+                {
+                    if (i is UniformGrid uniformGrid)
+                    {
+                        foreach (var j in uniformGrid.Children)
+                        {
+                            if (j is Button button)
+                            {
+                                //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                                if (button.Name.ToString() == keyPressed.ToString())
+                                {
+                                    button.Background = Brushes.Blue;
+                                    button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
 
-            else if (keyPressed == Key.LeftCtrl)
-            {
-                this.ChangeLayout();
+                                    await Task.Delay(50);
+                                    button.Background = new SolidColorBrush(Color.FromRgb(59, 59, 59));
+
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else if (i is Button button1)
+                    {
+                        //MessageBox.Show($"{button.Name.ToString()} == {keyPressed.ToString()} : {button.Name.ToString() == keyPressed.ToString()}");
+                        if (button1.Name.ToString() == keyPressed.ToString())
+                        {
+                            button1.Background = Brushes.Blue;
+                            //button1.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                            await Task.Delay(50);
+                            button1.Background = new SolidColorBrush(Color.FromRgb(59, 59, 59));
+
+                            return;
+                        }
+                    }
+                }
             }
         }
 
 
         public void ChangeLayout()
         {
+            // ВЫБОР НЕОБХОДИМОЙ РАСКЛАДКИ
             char[] keyboard;
 
             if (this.currentLayout)
             {
-                if (this.currentLetter)
-                {
-                    keyboard = this.ruUpperCase;
-                }
-                else
-                {
-                    keyboard = this.ruLowerCase;
-                }
+                keyboard = this.currentLetter ? this.ruUpperCase : this.ruLowerCase;
             }
             else
             {
-                if (this.currentLetter)
-                {
-                    keyboard = this.enUpperCase;
-                }
-                else
-                {
-                    keyboard = this.enLowerCase;
-                }
+                keyboard = this.currentLetter ? this.enUpperCase : this.enLowerCase;
             }
 
-            this.Oem3.Content = keyboard[0];
-            
-            for (int i = 1; i < 34;)
-            {
-                foreach (var item in this.secondButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
+            // ЗАПОЛНЕНИЕ КНОПОК
+            this.FillButtons(keyboard);
 
-                foreach (var item in this.thirdButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
-
-                foreach (var item in this.fourthButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
-            }
-
+            //
             this.currentLayout = !this.currentLayout;
         }
 
-
         public void ChangeLetter()
         {
+            // ВЫБОР НЕОБХОДИМОЙ РАСКЛАДКИ
             char[] keyboard;
 
             if (this.currentLetter)
             {
-                if (this.currentLayout)
-                {
-                    keyboard = this.enLowerCase;
-                }
-                else
-                {
-                    keyboard = this.ruLowerCase;
-                }
+                keyboard = this.currentLayout ? this.enLowerCase : this.ruLowerCase;
             }
             else
             {
-                if (this.currentLayout)
-                {
-                    keyboard = this.enUpperCase;
-                }
-                else
-                {
-                    keyboard = this.ruUpperCase;
-
-                }
+                keyboard = this.currentLayout ? this.enUpperCase : this.ruUpperCase;
             }
 
-            this.Oem3.Content = keyboard[0];
+            // ЗАПОЛНЕНИЕ КНОПОК
+            this.FillButtons(keyboard);
 
-            for (int i = 1; i < 34;)
-            {
-                foreach (var item in this.secondButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
-
-                foreach (var item in this.thirdButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
-
-                foreach (var item in this.fourthButtonRow.Children)
-                {
-                    if (item is Button button)
-                    {
-                        button.Content = keyboard[i];
-                        i++;
-                    }
-                }
-            }
-
+            //
             this.currentLetter = !this.currentLetter;
         }
 
+
+        private void FillButtons(char[] keyboard)
+        {
+            // КОЛЛЕКЦИЯ С КНОПКАМИ
+            List<UIElementCollection> allAlphaNumericButtonRows = new List<UIElementCollection>
+            {
+                this.secondAlphaNumericButtonRow.Children,
+                this.thirdAlphaNumericButtonRow.Children,
+                this.fourthAlphaNumericButtonRow.Children
+            };
+
+            // ЗАПОЛНЕНИЕ КНОПОК
+            this.Oem3.Content = keyboard[0];
+
+            int i = 1;
+            foreach (var button in allAlphaNumericButtonRows.SelectMany(row => row.OfType<Button>())) // ChatGPT про LINQ подсказал, а то забыл уже про него
+            {
+                button.Content = keyboard[i++];
+            }
+        }
     }
 }
